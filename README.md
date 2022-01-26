@@ -1,6 +1,6 @@
 # LibraryManage is a project managed by @SagarKarmoker
 
-Technologies are goging to to use in this project :
+Technologies are going to to use in this project :
 
 1. JavaFx
 2. jfoenix
