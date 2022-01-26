@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="720.0" style="-fx-background-color: #485460;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.librarymanagebysk.librarymanage.LibController">
+   <children>
+      <AnchorPane fx:id="login_head" layoutX="-2.0" layoutY="-1.0" prefHeight="720.0" prefWidth="360.0" style="-fx-background-color: #b2bec3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TextField layoutX="129.0" layoutY="236.0" prefHeight="31.0" prefWidth="193.0" promptText="Username" />
+            <PasswordField layoutX="129.0" layoutY="305.0" prefHeight="31.0" prefWidth="193.0" promptText="Password" />
+            <ImageView fx:id="imgButton" fitHeight="64.0" fitWidth="86.0" layoutX="174.0" layoutY="371.0" onMousePressed="#addButton" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../java/com/librarymanagebysk/librarymanage/images/login.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="uname" fitHeight="44.0" fitWidth="44.0" layoutX="51.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../java/com/librarymanagebysk/librarymanage/images/user.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pass" fitHeight="44.0" fitWidth="44.0" layoutX="51.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../java/com/librarymanagebysk/librarymanage/images/password.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="loginHead" fitHeight="82.0" fitWidth="101.0" layoutX="139.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../java/com/librarymanagebysk/librarymanage/images/login_head.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane layoutX="540.0" layoutY="30.0" prefHeight="52.0" prefWidth="200.0" style="-fx-background-color: #60a3bc;" AnchorPane.bottomAnchor="638.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="272.0" layoutY="19.0" prefHeight="8.0" prefWidth="193.0" text="Login Panel">
+               <font>
+                  <Font name="Berlin Sans FB Bold" size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="std" fitHeight="44.0" fitWidth="141.0" layoutX="470.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
