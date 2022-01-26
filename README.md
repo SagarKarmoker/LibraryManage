@@ -1,5 +1,8 @@
 # LibraryManage is a project managed by @SagarKarmoker
 
+*** Current status of this project ***
+Under work
+
 Technologies are going to use in this project :
 
 1. JavaFx
