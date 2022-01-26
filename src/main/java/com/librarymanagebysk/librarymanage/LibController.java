@@ -30,7 +30,7 @@ public class LibController implements Initializable {
     }
 
     public void addButton(MouseEvent mouseEvent) {
-        System.out.println("Button is worked");
+        System.out.println("Image Button is worked fine");
     }
 
     public void setLibManager(LibManager libManager) {
