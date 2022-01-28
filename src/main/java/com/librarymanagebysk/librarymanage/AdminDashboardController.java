@@ -1,10 +1,12 @@
 package com.librarymanagebysk.librarymanage;
 
 import com.librarymanagebysk.librarymanage.Database.BookDB;
+import com.librarymanagebysk.librarymanage.Database.StudentDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -28,10 +30,15 @@ public class AdminDashboardController implements Initializable {
     public TextField writerName;
     @FXML
     public TextField bookPrice;
+
     @FXML
     public TextField bookQuantity;
-    @FXML
-    public Button searchButton;
+    public TextField stdID;
+    public TextField studentFees;
+    public TextField stdName;
+    public TextField bookTaken;
+    public TextField studentIDforDetails;
+    public TextArea detailsLabel;
 
     @FXML
     ImageView booksSearchImg;
@@ -66,6 +73,48 @@ public class AdminDashboardController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void searchButton(ActionEvent actionEvent) {
+        String id = bookSearch.getText();
+
+        showBookDetails.setText(BookDB.getInfo(id));
+
+        if(BookDB.getInfo(id) == null){
+            libManager.notFoundAlert();
+        }
+        else {
+            libManager.foundAlert();
+        }
+    }
+
+    public void cancelButton(ActionEvent actionEvent) {
+        clearField();
+    }
+
+    public void adminStdSubmit(ActionEvent actionEvent) {
+
+    }
+
+    public void showDetailButton(ActionEvent actionEvent) {
+        String id = studentIDforDetails.getText();
+
+        detailsLabel.setText(StudentDB.getInfo(id));
+
+        if(StudentDB.getInfo(id) == null){
+            libManager.notFoundAlert();
+        }
+        else {
+            libManager.foundAlert();
+        }
+    }
+
+    public void clearField() {
+        stdID.setText("");
+        stdName.setText("");
+        studentFees.setText("");
+        bookQuantity.setText("");
+        bookTaken.setText("");
     }
 
     public void setLibManager(LibManager libManager) {

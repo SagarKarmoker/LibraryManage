@@ -22,11 +22,11 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #3c6382;">
                      <children>
                         <Separator layoutX="388.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <TextField layoutX="776.0" layoutY="177.0" prefHeight="26.0" prefWidth="358.0" />
-                        <TextField layoutX="776.0" layoutY="231.0" prefHeight="26.0" prefWidth="358.0" />
-                        <TextField layoutX="776.0" layoutY="289.0" prefHeight="26.0" prefWidth="358.0" />
-                        <TextField layoutX="776.0" layoutY="346.0" prefHeight="26.0" prefWidth="358.0" />
-                        <TextField layoutX="776.0" layoutY="405.0" prefHeight="26.0" prefWidth="358.0" />
+                        <TextField fx:id="bookID" layoutX="776.0" layoutY="177.0" prefHeight="26.0" prefWidth="358.0" />
+                        <TextField fx:id="bookName" layoutX="776.0" layoutY="231.0" prefHeight="26.0" prefWidth="358.0" />
+                        <TextField fx:id="writerName" layoutX="776.0" layoutY="289.0" prefHeight="26.0" prefWidth="358.0" />
+                        <TextField fx:id="bookPrice" layoutX="776.0" layoutY="346.0" prefHeight="26.0" prefWidth="358.0" />
+                        <TextField fx:id="bookQuantity" layoutX="776.0" layoutY="405.0" prefHeight="26.0" prefWidth="358.0" />
                         <ImageView fx:id="addBooksImg" fitHeight="68.0" fitWidth="119.0" layoutX="708.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../java/com/librarymanagebysk/librarymanage/images/book.png" />
@@ -67,8 +67,11 @@
                               <Font name="Berlin Sans FB Demi Bold" size="22.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="152.0" layoutY="178.0" prefHeight="18.0" prefWidth="177.0" />
-                        <TextArea layoutX="31.0" layoutY="303.0" prefHeight="205.0" prefWidth="336.0" />
+                        <TextField fx:id="bookSearch" layoutX="152.0" layoutY="178.0" prefHeight="18.0" prefWidth="177.0" />
+                        <TextArea fx:id="showBookDetails" layoutX="31.0" layoutY="303.0" prefHeight="205.0" prefWidth="336.0" promptText="[Book details Will be show here]">
+                           <font>
+                              <Font name="Arial Black" size="16.0" />
+                           </font></TextArea>
                         <Label layoutX="110.0" layoutY="258.0" text="Book Details" textFill="#7ee7ed">
                            <font>
                               <Font name="Arial Black" size="22.0" />
@@ -84,12 +87,12 @@
                               <Font name="Bernard MT Condensed" size="44.0" />
                            </font>
                         </Label>
-                        <Button layoutX="132.0" layoutY="546.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="109.0" style="-fx-background-radius: 20px; -fx-background-color: #4cd137;" text="Search">
+                        <Button layoutX="132.0" layoutY="546.0" mnemonicParsing="false" onAction="#searchButton" prefHeight="45.0" prefWidth="109.0" style="-fx-background-radius: 20px; -fx-background-color: #4cd137;" text="Search">
                            <font>
                               <Font name="Bodoni MT Black Italic" size="18.0" />
                            </font>
                         </Button>
-                        <JFXButton buttonType="RAISED" layoutX="846.0" layoutY="498.0" prefHeight="37.0" prefWidth="109.0" ripplerFill="#222f29" style="-fx-background-color: #f5f6fa; -fx-border-radius: 15px;" text="Add Book">
+                        <JFXButton buttonType="RAISED" layoutX="846.0" layoutY="498.0" onAction="#addBookButton" prefHeight="37.0" prefWidth="109.0" ripplerFill="#222f29" style="-fx-background-color: #f5f6fa; -fx-border-radius: 15px;" text="Add Book">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
