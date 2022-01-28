@@ -28,7 +28,7 @@ public class StudentDB {
         //jdbc code here
         boolean flag = false;
         try {
-            Connection connection = BookDB.create();
+            Connection connection = StudentDB.create();
             String query = "INSERT INTO students(id,stdName,bookTaken,quantity,fees) VALUES(?,?,?,?,?)";
             // prepared connection
             PreparedStatement statement = connection.prepareStatement(query);
@@ -53,7 +53,7 @@ public class StudentDB {
     public static String getInfo(String id) {
         String send = null;
         try {
-            Connection connection = BookDB.create();
+            Connection connection = StudentDB.create();
             String query = "select id,stdName,bookTaken,quantity,fees from students where id =?";
 
             // Step 2:Create a statement using connection object
