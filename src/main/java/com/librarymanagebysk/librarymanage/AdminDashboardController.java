@@ -1,6 +1,8 @@
 package com.librarymanagebysk.librarymanage;
 
 import com.librarymanagebysk.librarymanage.Database.BookDB;
+import com.librarymanagebysk.librarymanage.Database.IssueBook;
+import com.librarymanagebysk.librarymanage.Database.StudentBookDB;
 import com.librarymanagebysk.librarymanage.Database.StudentDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,6 +46,15 @@ public class AdminDashboardController implements Initializable {
     ImageView booksSearchImg;
     @FXML
     ImageView addBooksImg;
+
+    // Book Issue section
+    @FXML
+    public TextField stdIdForDetails;
+    public TextArea showDetails;
+    public TextField stdIdForBook;
+    public TextField BookID_1;
+    public TextField BookID_2;
+    public TextField BookID_3;
 
 
     @Override
@@ -93,7 +104,27 @@ public class AdminDashboardController implements Initializable {
     }
 
     public void adminStdSubmit(ActionEvent actionEvent) {
+        //submit to database
+        try {
+            String id = stdID.getText();
+            String name = stdName.getText();
+            boolean bookTakenOrNot = Boolean.parseBoolean(bookTaken.getText());
+            int fees = Integer.parseInt(studentFees.getText());
+            //int quantity = Integer.parseInt(bookQuantity.getText());
+            int quantity = 0;
 
+            Student student = new Student(name, id, bookTakenOrNot, quantity, fees);
+            boolean check = StudentDB.InsertToDB(student);
+            if (check) {
+                //show alert
+                libManager.conformationAlert();
+            } else {
+                libManager.showAlert();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        clearField();
     }
 
     public void showDetailButton(ActionEvent actionEvent) {
@@ -115,6 +146,42 @@ public class AdminDashboardController implements Initializable {
         studentFees.setText("");
         bookQuantity.setText("");
         bookTaken.setText("");
+    }
+
+    // Book Issue section
+    public void IssueShowDetailButton(ActionEvent actionEvent) {
+        String id = stdIdForDetails.getText();
+
+        showDetails.setText(StudentDB.getInfo(id));
+
+        if(StudentDB.getInfo(id) == null){
+            libManager.notFoundAlert();
+        }
+        else {
+            libManager.foundAlert();
+        }
+    }
+
+    public void IssueBookToStudent(ActionEvent actionEvent) {
+        try {
+            String stdID = stdIdForBook.getText();
+            String book_1 = BookID_1.getText();
+            String book_2 = BookID_2.getText();
+            String book_3 = BookID_3.getText();
+
+            IssueBook issueBook = new IssueBook(stdID, book_1, book_2, book_3);
+
+            boolean check = StudentBookDB.InsertToDB(issueBook);
+            if (check) {
+                //show alert
+                libManager.conformationAlert();
+            } else {
+                libManager.showAlert();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        clearField();
     }
 
     public void setLibManager(LibManager libManager) {

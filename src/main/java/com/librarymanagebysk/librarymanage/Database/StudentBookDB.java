@@ -4,7 +4,7 @@ import com.librarymanagebysk.librarymanage.Student;
 
 import java.sql.*;
 
-public class StudentDB {
+public class StudentBookDB {
     static Connection con;
     boolean flag = false;
 
@@ -23,22 +23,21 @@ public class StudentDB {
         return con;
     }
 
-    public static boolean InsertToDB(Student std) throws SQLException {
+    public static boolean InsertToDB(IssueBook ids) throws SQLException {
         //jdbc code here
         boolean flag = false;
         try {
-            Connection connection = StudentDB.create();
-            String query = "INSERT INTO students(id,stdName,bookTaken,quantity,fees) VALUES(?,?,?,?,?)";
+            Connection connection = StudentBookDB.create();
+            String query = "INSERT INTO stdBookDB(id, bookID1, bookID2, bookID3) VALUES(?,?,?,?)";
             // prepared connection
             PreparedStatement statement = connection.prepareStatement(query);
             // set the values of parameter
-            statement.setString(1, std.getId());
-            statement.setString(2, std.getName());
-            statement.setBoolean(3, std.isBookTaken());
-            statement.setInt(4, std.getQuantity());
-            statement.setInt(5, std.getFees());
+            statement.setString(1, ids.getId());
+            statement.setString(2, ids.getBookId1());
+            statement.setString(3, ids.getBookId2());
+            statement.setString(4, ids.getBookId3());
             //execute
-            if(getInfo(std.getId()) == null){
+            if(getInfo(ids.getId()) == null){
                 statement.executeUpdate();
                 flag = true;
             }
@@ -53,7 +52,7 @@ public class StudentDB {
         String send = null;
         try {
             Connection connection = StudentDB.create();
-            String query = "select id,stdName,bookTaken,quantity,fees from students where id =?";
+            String query = "select id from stdBookDB where id =?";
 
             // Step 2:Create a statement using connection object
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -66,17 +65,15 @@ public class StudentDB {
                 // Step 4: Process the ResultSet object.
                 while (rs.next()) {
                     id = rs.getString("id");
-                    String name = rs.getString(("stdName"));
-                    boolean bookTaken = rs.getBoolean("bookTaken");
-                    String fees = rs.getString("fees");
-                    String quantity = rs.getString("quantity");
+                    String BookId1 = rs.getString("bookID1");
+                    String BookId2 = rs.getString("bookID2");
+                    String BookId3 = rs.getString("bookID3");
 
-                    send =  "Student{" +
-                            "name='" + name + '\'' +
-                            ", id='" + id + '\'' +
-                            ", bookTaken=" + bookTaken +
-                            ", quantity=" + quantity +
-                            ", fees=" + fees +
+                    send =  "IssueBook{" +
+                            "id='" + id + '\'' +
+                            ", BookId1='" + BookId1 + '\'' +
+                            ", BookId2='" + BookId2 + '\'' +
+                            ", BookId3='" + BookId3 + '\'' +
                             '}';
                 }
             }
@@ -85,8 +82,4 @@ public class StudentDB {
         }
         return send;
     }
-
-
-    // Database Update section Start Here
-
 }
